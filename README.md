@@ -1,5 +1,5 @@
 # Faker
-Using this tool, you can use it for various uses, such as registering on sites; Create a fake identity for yourself
+Using this tool, you can use it for various uses, such as registering on sites; Create a fake identity for yourself!
 
 
 # Plugins required
