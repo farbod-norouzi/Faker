@@ -1,10 +1,10 @@
+  from os import system
+
 # Check the requirements
 
 try:
-  from os import system
   from ast import For
   from faker import Faker
-  import os
   from colorama import Fore
 except ImportError:
    system("pip install ast")
