@@ -1,11 +1,25 @@
+# Start (Import libraries)
+
+from cmath import exp
 from os import system
 from ast import For
-from faker import Faker
+import platform
+import sys
 import os
-from colorama import Fore
-import platform 
+try:
+   from faker import Faker
+   from colorama import Fore
+except:
+   print("Installing prerequisites")
+   print("Installing prerequisites")
+   system("pip install faker")
+   system("pip install colorama")
+   exit('\n',"Run script Again")
 
-# Start APP
+# End (Import libraries)
+
+# Start (Banner & Clearing)
+
 def clear():
    result = platform.uname()[0]
    if result == "Windows":
@@ -21,8 +35,16 @@ print(Fore.RED+ """
  _|   \__,_| \___| _|\_\ \___| _|    
                                      """+Fore.RESET)
 
-userput = input(Fore.YELLOW+ "Please Enter an Language and Location [Example ~> en_US]: "+Fore.RESET)
-faker = Faker(userput)
+# End (Banner & Clearing)
+
+# Start (APP & Get Input From User)
+
+try:
+   userput = input(Fore.YELLOW+ "Please Enter an Language and Location [Example ~> en_US]: "+Fore.RESET)
+   faker = Faker(userput)
+except:
+    print(Fore.RED+ "You canceled the program!"+Fore.RESET)
+    sys.exit()
 
 #### GENERATE Fake Variables ###########
 fullname = faker.name() # Random Full Name
@@ -35,6 +57,8 @@ favorite_color = faker.color_name() # Random Favorite Color
 website = faker.domain_name() # Random Website Domain
 
 ###### SHOW Fake Variables #########
+
+
 print('\n',Fore.CYAN+ "Language & Location:="+Fore.RESET,Fore.GREEN+ userput+Fore.RESET,'\n')
 print("------------Faker------------",'\n')
 print(". Full Name : {}\n".format(fullname))
@@ -45,4 +69,19 @@ print(". Job : {}\n".format(job))
 print(". address : {}\n".format(address.replace("\n" , " - ")))
 print(". Favrite Color : {}\n".format(favorite_color))
 print(". Web Site : {}\n".format(website))
+
+filefake = open("Faker.txt","w",encoding="utf-8")
+filefake.write("Full Name: "+ fullname)
+filefake.write("\n \n User Name: "+ username)
+filefake.write("\n \n Password: "+ password)
+filefake.write("\n \n Email "+ email)
+filefake.write("\n \n Job: "+ job)
+filefake.write("\n \n Address: "+ address)
+filefake.write("\n \n Favrite Color: "+ favorite_color)
+filefake.write("\n \n Web Site: "+ website)
+filefake.close()
+print('\n',Fore.GREEN+". The information created in the 'Faker.txt' file was saved!"+Fore.RESET,'\n')
+
 print("------------Faker------------")
+
+# End (APP & Get Input From User)
